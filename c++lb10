@@ -1,0 +1,143 @@
+#include <iostream>
+#include <ctime>
+#include <string>
+#include <cctype> 
+using namespace std;
+
+int main()
+{
+
+            int a;
+    cout << "Введите номер задания:" <<  "\n" << "1. Задание 1" << "\n" << "2. Задание 2" << "\n" 
+    << "3. Задание 3"  << "\n" << "4. Задание 4" << "\n5. выход \n";
+    cin >> a;
+    while (cin.fail() || a > 5 || a < 1)
+    {
+        cout << "Ошибка ввода!Повторите!\n";
+        cin.clear();
+        cin.ignore(32767, '\n');
+        cin >> a;
+        cout << endl;
+    }
+    bool k = 0;
+    while (k != 1) {
+        
+
+        switch (a) {
+        case 1:
+        {
+            cout << "Задание 1" << "\n";
+string str;
+cout << "введите строку\n";
+      cin.ignore();
+getline (cin, str);
+cout <<"ваша начальная строка: " << str << endl;
+string newStr = "";
+for (int i = 0; i < sizeof(str); i++) {
+    if(isdigit(str[i])) {
+        newStr += str[i];
+    }
+}
+cout << endl << "ваша новая строка: " << newStr << endl;                break;
+        }
+        case 2: {
+            cout << "Задание 2" << endl;
+    
+string str;
+cout << "введите новое значение строки" << endl;
+      cin.ignore();
+getline(cin, str);
+if (str.substr(0,3) == "Hel") {
+    str.append(":)");
+} 
+if (str.substr(0,3) == "Bye") {
+    str.append(":(");
+}
+cout << str << endl;
+    
+    
+    break;
+            }
+        case 3: {
+            cout << "Задание 3" << endl;
+string str;
+cout << endl << "введите свою фамилию и имя" << endl;
+      cin.ignore();
+getline(cin, str);
+int spaceIndex = str.find(" ");
+str.replace(0, spaceIndex, "Соломенникова");
+cout << str << endl;
+    
+    break;
+            }
+        case 4: {
+            cout << "Задание 4" << endl;
+ string longStr;
+    cout << "введите строку\n" << endl;
+          cin.ignore();
+    getline(cin, longStr);
+    while (longStr == "") {
+    cout << "\nвведена пустая строка, попробуйте еще раз" << endl; 
+    cin.clear();
+    getline(cin, longStr);
+    }
+    cout << "\nваша строка: \n" << longStr << endl;
+    
+    bool play = true;
+    int player = 1;
+    string check = "";
+    while (play) {
+        
+        cout << "\nигрок №" << player << " введите слово\n";
+        string word;
+        getline(cin, word);
+        if (check.find(word) == -1) {
+            check.append(word);
+        } else {
+            while (check.find(word) != -1) {
+                cout << "это слово уже было! будьте оригинальнее!" << endl;
+                cin.clear();
+                getline(cin, word);
+            }
+        }
+
+        if (longStr.find(word) != -1) {
+            player = (player == 1) ? 2 : 1;
+            cout << "\nход переходит следующему игроку\n";
+        }
+        else {
+            player = (player == 1) ? 2 : 1;
+            cout << "игрок №" << player << " победил! \n";
+            play = false;
+        }
+    }
+
+     break;
+        }
+        case 5: {
+            cout << "выход из программы...";
+default:   k = 1;
+
+
+        }
+
+        }
+        if (k == 1) {
+            break;
+        }else {
+            cout << "Введите номер задания:" << endl;
+              cin >> a;
+                  while (cin.fail() || a > 5 || a < 1)
+    {
+        cout << "Ошибка ввода!Повторите!\n";
+        cin.clear();
+        cin.ignore(32767, '\n');
+        cin >> a;
+        cout << endl;
+    }
+        }
+
+        
+    }
+    return 0;
+}
